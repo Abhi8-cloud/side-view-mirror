@@ -1,13 +1,15 @@
 cmake_minimum_required(VERSION 3.14)
- 
+
 set(This Example)
 project(${This} C CXX)
- 
+
 set(CMAKE_C_STANDARD 99)
-set(CMAKE_CXX_STANDARD 11)
- 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 include(FetchContent)
- 
+
 # Check if local googletest folder exists
 if(EXISTS "${CMAKE_SOURCE_DIR}/googletest/CMakeLists.txt")
     message(STATUS "Using local googletest folder")
@@ -20,17 +22,17 @@ else()
     )
     FetchContent_MakeAvailable(googletest)
 endif()
- 
+
 enable_testing()
- 
+
 set(Headers 
     Example.hpp
 )
 set(Sources 
     Example.cpp 
 )
- 
+
 add_library(${This} STATIC ${Sources} ${Headers})
- 
+
 # Let test folder handle its own linking
 add_subdirectory(test)
