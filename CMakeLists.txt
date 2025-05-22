@@ -1,26 +1,18 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.10)
+project(SideViewMirror)
 
-set(This Example)
-
-project(${This} C CXX)
-
-set(CMAKE_C_STANDARD 99)
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_POSITION_INDEPENDENT_CODE ON)
-
-enable_testing()
-
-add_subdirectory(googletest)
-
-set(Headers 
-    Example.hpp
-)
-set(Sources 
-    Example.cpp 
+# Add source files
+set(SOURCES
+    src/Example.cpp
+    # Add other source files here
 )
 
-add_library(${This} STATIC ${Sources} ${Headers})
+add_library(Example ${SOURCES})
 
-add_subdirectory(test)
+# Include directories
+include_directories(include)
+
+# Add tests if any
+# add_subdirectory(tests)
 
 
